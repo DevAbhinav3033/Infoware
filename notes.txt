@@ -1,0 +1,26 @@
+ALTER USER 'root'@'localhost' IDENTIFIED  WITH mysql_native_password BY 'Workinprogress@2024';
+flush privileges;
+
+
+CREATE DATABASE employee_db;
+USE employee_management;
+
+CREATE TABLE Employee (
+    EID INT AUTO_INCREMENT PRIMARY KEY,
+    FullName VARCHAR(255) NOT NULL,
+    JobTitle VARCHAR(255),
+    PhoneNumber VARCHAR(20),
+    Email VARCHAR(255),
+    City VARCHAR(255),
+    State VARCHAR(255),
+    Address VARCHAR(255)
+);
+
+CREATE TABLE Relative (
+    EID INT,
+    ECName VARCHAR(255),
+    Relation VARCHAR(255),
+    RelativePhoneNumber VARCHAR(20),
+    Title ENUM('Primary', 'Secondary'),
+    FOREIGN KEY (EID) REFERENCES Employee(EID)
+);
